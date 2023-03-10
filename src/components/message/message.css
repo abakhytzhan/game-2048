@@ -1,0 +1,43 @@
+p {
+  text-align: center;
+}
+
+.winMessage,
+.gameOver,
+.gameOver2 {
+  width: 200px;
+  font-size: 25px;
+  line-height: 40px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.winMessage {
+  background-color: #e97127;
+  animation: message 1s ease infinite;
+  font-weight: bold;
+}
+
+@keyframes message {
+  0% {
+    background-color: beige;
+    color: #e97127;
+  }
+  100% {
+    background-color: #e97127;
+    color: beige;
+  }
+}
+
+.gameOver {
+  background-color: #2f4f4f;
+  color: #50c8ff;
+}
+
+.gameOver2 {
+  width: 410px;
+  background-color: #2f4f4f;
+  color: #50c8ff;
+}
