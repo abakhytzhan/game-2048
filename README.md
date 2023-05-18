@@ -32,4 +32,5 @@ https://delightful-marshmallow-ab930b.netlify.app/
 ## Источники
 
 https://github.com/jeffleu/2048
+
 https://medium.com/tinyso/how-to-create-game-2048-in-javascript-reactjs-react-native-4588bfd136c9
