@@ -8,6 +8,7 @@ import { playSound2 } from "./components/sound/sound";
 import { playSound3 } from "./components/sound/sound";
 import { checkWin } from "./utils/checkWin";
 import Message from "./components/message/message";
+import React from "react";
 
 interface AppProps {}
 
@@ -20,6 +21,9 @@ export interface AppState {
 
 class App extends Component<AppProps, AppState> {
   length: number;
+  button1: React.RefObject<HTMLButtonElement>;
+  button2: React.RefObject<HTMLButtonElement>;
+  button3: React.RefObject<HTMLButtonElement>;
   constructor(props: any) {
     super(props);
     this.length = 4;
@@ -34,6 +38,9 @@ class App extends Component<AppProps, AppState> {
       gameOver: false,
       message: "",
     };
+    this.button1 = React.createRef();
+    this.button2 = React.createRef();
+    this.button3 = React.createRef();
   }
 
   createBoard(length: number) {
@@ -249,22 +256,26 @@ class App extends Component<AppProps, AppState> {
   }
 
   clickHandle(num: number) {
-    const btns = document.querySelectorAll("button");
-    btns[0].style.background = "#2f4f4f";
-    btns[1].style.background = "#2f4f4f";
-    btns[2].style.background = "#2f4f4f";
-    btns[0].style.color = "#2acaea";
-    btns[1].style.color = "#2acaea";
-    btns[2].style.color = "#2acaea";
+    if (this.button1.current) this.button1.current.style.background = "#2f4f4f";
+    if (this.button2.current) this.button2.current.style.background = "#2f4f4f";
+    if (this.button3.current) this.button3.current.style.background = "#2f4f4f";
+
+    if (this.button1.current) this.button1.current.style.color = "#2acaea";
+    if (this.button2.current) this.button2.current.style.color = "#2acaea";
+    if (this.button3.current) this.button3.current.style.color = "#2acaea";
+
     if (num === 4) {
-      btns[0].style.background = "#2acaea";
-      btns[0].style.color = "#2f4f4f";
+      if (this.button1.current)
+        this.button1.current.style.background = "#2acaea";
+      if (this.button1.current) this.button1.current.style.color = "#2f4f4f";
     } else if (num === 5) {
-      btns[1].style.background = "#2acaea";
-      btns[1].style.color = "#2f4f4f";
+      if (this.button2.current)
+        this.button2.current.style.background = "#2acaea";
+      if (this.button2.current) this.button2.current.style.color = "#2f4f4f";
     } else if (num === 6) {
-      btns[2].style.background = "#2acaea";
-      btns[2].style.color = "#2f4f4f";
+      if (this.button3.current)
+        this.button3.current.style.background = "#2acaea";
+      if (this.button3.current) this.button3.current.style.color = "#2f4f4f";
     }
 
     this.initBoard(num);
@@ -283,6 +294,7 @@ class App extends Component<AppProps, AppState> {
         </div>
         <div className="buttons">
           <button
+            ref={this.button1}
             className="btn button1"
             value="4"
             onClick={() => this.clickHandle(4)}
@@ -290,6 +302,7 @@ class App extends Component<AppProps, AppState> {
             4x4
           </button>
           <button
+            ref={this.button2}
             className="btn button2"
             value="5"
             onClick={() => this.clickHandle(5)}
@@ -297,6 +310,7 @@ class App extends Component<AppProps, AppState> {
             5x5
           </button>
           <button
+            ref={this.button3}
             className="btn button2"
             value="6"
             onClick={() => this.clickHandle(6)}
